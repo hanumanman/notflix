@@ -1,0 +1,7 @@
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
+  color: whitesmoke !important;
+}
+
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  border: 2px solid red;
+}
