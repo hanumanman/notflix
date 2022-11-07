@@ -9,14 +9,6 @@
   margin: 0 0.6rem 0 0.6rem;
 }
 
-.css-6hp17o-MuiList-root-MuiMenu-list {
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: none;
-}
-
 a {
   text-decoration: none;
   color: white;

@@ -29,7 +29,6 @@ function FiltersPage() {
           Genres
           <IconButton
             size="large"
-            aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
             onClick={handleOpenNavMenu}
@@ -53,10 +52,15 @@ function FiltersPage() {
             onClose={handleCloseNavMenu}
             sx={{
               display: "block",
+              backgroundColor: "transparent",
             }}
           >
             {genres?.map((genre) => (
-              <MenuItem key={genre.id} onClick={handleCloseNavMenu}>
+              <MenuItem
+                id="genreLi"
+                key={genre.id}
+                onClick={handleCloseNavMenu}
+              >
                 <Link
                   to={`genre/${genre.id}`}
                   onClick={() => {
