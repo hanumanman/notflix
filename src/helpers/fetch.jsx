@@ -2,7 +2,12 @@ import React from "react";
 import { BASE_URL, IMG_BASE_URL, API_KEY } from "../app/API/config";
 import useFetch from "../hooks/useFetch";
 import ERROR_IMG from "../assets/no-image.jpg";
-import { Chip, ImageListItem, ImageListItemBar } from "@mui/material";
+import {
+  Chip,
+  ImageListItem,
+  ImageListItemBar,
+  Typography,
+} from "@mui/material";
 
 const enFilter = (data) => {
   const enData = data?.filter((data) => data.iso_639_1 === "en");
@@ -75,7 +80,7 @@ export const fetchDescription = (movieId) => {
             </div>
           ))}
         </div>
-        <div id="movieOverview">{overview}</div>
+        <div id="movieOverview">{overview ? overview : "No description"}</div>
         <div>Release Date: {release}</div>
       </div>
     );
@@ -90,50 +95,59 @@ export const fetchCredit = (movieId) => {
 
     let cast = data?.cast;
     let crew = data?.crew;
+    console.log(crew);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error</div>;
     return (
       <div id="movieCast">
         <h2>CAST</h2>
-        <div id="castList" style={{ display: "flex" }}>
-          {cast?.slice(0, 5).map((member, index) => (
-            <ImageListItem key={member.name}>
-              <img
-                src={
-                  member.profile_path
-                    ? `${IMG_BASE_URL}${member.profile_path}`
-                    : `${ERROR_IMG}`
-                }
-                alt={member.name}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                title={member.name}
-                subtitle={member.character}
-              />
-            </ImageListItem>
-          ))}
+        <div className="castList" style={{ display: "flex" }}>
+          {cast?.length > 0 ? (
+            cast.slice(0, 5).map((member, index) => (
+              <ImageListItem key={`${member.name}${index}`}>
+                <img
+                  src={
+                    member.profile_path
+                      ? `${IMG_BASE_URL}${member.profile_path}`
+                      : `${ERROR_IMG}`
+                  }
+                  alt={member.name}
+                  loading="lazy"
+                />
+                <ImageListItemBar
+                  title={member.name}
+                  subtitle={member.character}
+                />
+              </ImageListItem>
+            ))
+          ) : (
+            <Typography variant="h6">No Cast Info</Typography>
+          )}
         </div>
         <h2>CREW</h2>
-        <div id="castList" style={{ display: "flex" }}>
-          {crew?.slice(0, 5).map((member, index) => (
-            <ImageListItem key={member.name}>
-              <img
-                src={
-                  member.profile_path
-                    ? `${IMG_BASE_URL}${member.profile_path}`
-                    : `${ERROR_IMG}`
-                }
-                alt={member.name}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                title={member.name}
-                subtitle={member.department}
-              />
-            </ImageListItem>
-          ))}
+        <div className="castList" style={{ display: "flex" }}>
+          {crew?.length > 0 ? (
+            crew.slice(0, 5).map((member, index) => (
+              <ImageListItem key={`${member.name}${index}`}>
+                <img
+                  src={
+                    member.profile_path
+                      ? `${IMG_BASE_URL}${member.profile_path}`
+                      : `${ERROR_IMG}`
+                  }
+                  alt={member.name}
+                  loading="lazy"
+                />
+                <ImageListItemBar
+                  title={member.name}
+                  subtitle={member.department}
+                />
+              </ImageListItem>
+            ))
+          ) : (
+            <Typography variant="h6">No Crew Info</Typography>
+          )}
         </div>
       </div>
     );

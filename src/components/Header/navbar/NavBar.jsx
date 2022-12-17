@@ -51,9 +51,9 @@ function ResponsiveAppBar() {
           </Link>
           <Link
             style={{ marginLeft: "25px" }}
-            to="/browse"
+            to="/browse/genre/28"
             onClick={() => {
-              dispatch(updateBrowsing("Pick something! Right over there ↑"));
+              dispatch(updateBrowsing("Action"));
               updatePage(1);
             }}
           >

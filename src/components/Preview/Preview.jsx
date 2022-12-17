@@ -37,7 +37,6 @@ function Preview() {
                 opacity: "0.9",
                 fontSize: "0.7rem",
               }}
-              href="https://phimmoichilly.net/xem/sat-thu-doi-dau-tap-full-pm101618"
             >
               <PlayArrowIcon sx={{ marginRight: "5px" }} />
               Play

@@ -2,8 +2,10 @@
   position: absolute;
   background-color: #141414 !important;
   padding: 0;
+
   color: white;
   top: 0;
+  min-width: 100vw;
 }
 
 #detailImg {
@@ -41,6 +43,11 @@
   background-color: rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 10px;
+}
+
+#movieTitle {
+  text-align: center;
+  padding: 2rem;
 }
 
 #movieDescription {
@@ -88,6 +95,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-top: 1rem;
 }
 #movieCast img {
   max-width: 18vw;
@@ -96,10 +105,10 @@
 }
 
 @media only screen and (max-width: 600px) {
-  #castList {
+  .castList {
     flex-direction: column;
   }
-  #castList img {
-    max-width: 30vw;
+  #movieCast img {
+    max-width: 50vw;
   }
 }
